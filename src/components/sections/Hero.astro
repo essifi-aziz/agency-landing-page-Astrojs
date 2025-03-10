@@ -3,26 +3,29 @@ import Button from "../shared/Button.astro";
 import Container from "../shared/Container.astro";
 import Paragraph from "../shared/Paragraph.astro";
 import ByNumber from "./ByNumber.astro";
+import ContactModal from "../shared/ContactModal.astro";
 
 ---
 
 <section class="relative pt-32 lg:pt-36">
     <Container className={"flex flex-col lg:flex-row gap-10 lg:gap-12"}>
         <div class="absolute w-full lg:w-1/2 inset-y-0 lg:right-0 ">
-            <span class="absolute -left-6 md:left-4 top-24 lg:top-28 w-24 h-24 rotate-90 skew-x-12 rounded-3xl bg-green-400 blur-xl opacity-60 lg:opacity-95 lg:block hidden"></span>
-            <span class="absolute right-4 bottom-12 w-24 h-24 rounded-3xl bg-primary blur-xl opacity-80"></span>
+            <span class="absolute -left-6 md:left-4 top-24 lg:top-28 w-24 h-24 rotate-90 skew-x-12 rounded-3xl bg-[#5671FF] blur-xl opacity-60 lg:opacity-95 lg:block hidden"></span>
+            <span class="absolute right-4 bottom-12 w-24 h-24 rounded-3xl bg-[#2B3A67] blur-xl opacity-80"></span>
         </div>
-        <span class="w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-primary to-green-400 absolute -top-5 lg:left-0 rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90"></span>
+        <span class="w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-[#2B3A67] to-[#5671FF] absolute -top-5 lg:left-0 rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90"></span>
         <div class="relative flex flex-col items-center text-center lg:text-left lg:py-7 xl:py-8 
         lg:items-start lg:max-w-none max-w-3xl mx-auto lg:mx-0 lg:flex-1 lg:w-1/2">
             
             <h1 class="text-3xl/tight sm:text-4xl/tight md:text-5xl/tight xl:text-6xl/tight
-             font-bold text-heading-1">
-             Social Media  <span class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-primary via-30% to-green-600">Marketing</span> is the Best Ever.
+             font-bold text-heading-1 font-['Roboto']">
+             Carthago Digital <span class="text-transparent bg-clip-text bg-gradient-to-br from-[#2B3A67]  to-[#5671FF]">Works</span>
             </h1>
-            <Paragraph className="mt-8">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores repellat perspiciatis aspernatur quis voluptatum porro incidunt, 
-                libero sequi quos eos velit
+            <Paragraph className="mt-8 font-['Roboto']">
+                We excel in website development, branding, and photo & video editing. 
+                Our commitment: exceptional quality and fast delivery for all your digital projects.
+                From stunning websites that capture your vision to powerful branding that sets you apart,
+                we bring your ideas to life with creative solutions that drive results.
             </Paragraph>
             <div class="mt-10  w-full flex max-w-md mx-auto lg:mx-0">
                 <div class="flex sm:flex-row flex-col gap-5 w-full">
@@ -33,8 +36,8 @@ import ByNumber from "./ByNumber.astro";
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 9v.906a2.25 2.25 0 01-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 001.183 1.981l6.478 3.488m8.839 2.51l-4.66-2.51m0 0l-1.023-.55a2.25 2.25 0 00-2.134 0l-1.022.55m0 0l-4.661 2.51m16.5 1.615a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V8.844a2.25 2.25 0 011.183-1.98l7.5-4.04a2.25 2.25 0 012.134 0l7.5 4.04a2.25 2.25 0 011.183 1.98V19.5z" />
                             </svg>                                                                  
                         </span>
-                        <input type="email" name="" id="" placeholder="johndoe@gmail.com" class="w-full py-3 outline-none bg-transparent">
-                        <Button variant={"primary"} className={"min-w-max text-white"}>
+                        <input type="email" name="" id="heroEmail" placeholder="johndoe@gmail.com" class="w-full py-3 outline-none bg-transparent">
+                        <Button variant={"primary"} className={"min-w-max text-white"} data-open-modal>
                             <span class="hidden sm:flex relative z-[5]">
                                 Get Started
                             </span>
@@ -55,4 +58,33 @@ import ByNumber from "./ByNumber.astro";
     </Container>
 
     <ByNumber/>
+    <ContactModal />
 </section>
+
+<script>
+    // Capture l'email et ouvre le modal
+    const form = document.querySelector('form');
+    const heroEmail = document.querySelector('#heroEmail');
+    const modal = document.querySelector('#contactModal');
+    const modalEmail = document.querySelector('#contactModal input[type="email"]');
+
+    form?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (modalEmail && heroEmail.value) {
+            modalEmail.value = heroEmail.value;
+        }
+        modal?.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Ouvre également le modal au clic du bouton
+    const getStartedBtn = document.querySelector('[data-open-modal]');
+    getStartedBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (modalEmail && heroEmail.value) {
+            modalEmail.value = heroEmail.value;
+        }
+        modal?.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    });
+</script>

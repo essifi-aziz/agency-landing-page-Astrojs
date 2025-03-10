@@ -1,0 +1,157 @@
+---
+import Container from "../shared/Container.astro";
+import Title from "../shared/Title.astro";
+
+const pricingPlans = [
+    {
+        name: "Startup Digital Pack (1,440 TND)",
+        price: 1440,
+        description: "Perfect for startups needing a foundational digital presence",
+        features: [
+            "Logo Design: One concept, 2 rounds of revisions",
+            "Basic Brand Identity: Color palette and typography guidelines",
+            "Social Media Visuals: Profile image & banner design",
+            "3-Page Static Website: Home, About, Contact",
+            "Basic SEO Setup: Meta tags and keywords"
+        ],
+        popular: false,
+        buttonText: "Get Started",
+        buttonVariant: "outline"
+    },
+    {
+        name: "Growth Digital Pack (2,200 TND)",
+        price: 2200,
+        description: "Ideal for businesses scaling their operations",
+        features: [
+            "Startup Digital Pack components",
+            "Additional Logo Variations & Revisions: Two extra concepts, 3 rounds",
+            "Comprehensive Identity Guide: Detailed brand guidelines",
+            "5-Page Dynamic Website: Additional pages (Services, Portfolio)",
+            "CMS Integration: (WordPress or similar)",
+            "Enhanced Functionality: Contact form & analytics",
+            "Additional Features & Testing"
+        ],
+        popular: true,
+        buttonText: "Get Started",
+        buttonVariant: "primary"
+    },
+    {
+        name: "Enterprise Digital Pack (3,100 TND)",
+        price: 3100,
+        description: "Tailored for large-scale enterprise needs",
+        features: [
+            "Growth Digital Pack components",
+            "Includes Standard Branding Pack",
+            "Business Collateral: Business card & letterhead design",
+            "Extended Social Media Templates & Merchandise Mockup: 10 templates/mockup",
+            "Full-Featured Website: Flexible page count",
+            "E-Commerce Integration: Setup for online sales",
+            "Advanced SEO & Automation: Enhanced strategies"
+        ],
+        popular: false,
+        buttonText: "Get Started",
+        buttonVariant: "outline"
+    }
+]
+---
+
+<section id="pricing" class="relative pt-20 pb-24 lg:pb-40">
+    <Container className="space-y-12 relative">
+        <div class="text-center max-w-3xl mx-auto space-y-6">
+            <h2 class="text-3xl/tight sm:text-4xl/tight md:text-5xl/tight font-bold text-heading-1 font-['Roboto']">
+                Transparent Pricing for Your <span class="text-transparent bg-clip-text bg-gradient-to-br from-[#2B3A67] to-[#5671FF]">Digital Success</span>
+            </h2>
+            <p class="text-lg text-heading-3">Choose the perfect plan for your business needs</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 relative">
+            {
+                pricingPlans.map((plan, index) => (
+                    <div class:list={[
+                        "rounded-3xl p-8 lg:p-10 border-2 border-box-border/20 bg-white/10 dark:bg-gray-900/10 backdrop-blur-xl shadow-xl hover:shadow-2xl relative overflow-hidden transition-all duration-300 hover:scale-[1.02] flex flex-col",
+                        plan.popular && "scale-[1.02] border-[#5671FF]/30 bg-gradient-to-b from-[#2B3A67]/10 to-transparent popular-plan"
+                    ]}>
+                        {plan.popular && (
+                            <>
+                                <span class="absolute top-6 right-6 text-sm font-medium text-[#5671FF] bg-[#5671FF]/10 py-1.5 px-4 rounded-full shadow-sm">Popular</span>
+                                <div class="absolute -top-12 -right-12 w-24 h-24 bg-[#5671FF]/10 rounded-full blur-xl"></div>
+                                <div class="absolute -bottom-12 -left-12 w-24 h-24 bg-[#5671FF]/10 rounded-full blur-xl"></div>
+                            </>
+                        )}
+                        
+                        <div class="space-y-6">
+                            <h3 class="text-2xl font-bold text-heading-2">{plan.name}</h3>
+                            <p class="text-heading-3 text-base">{plan.description}</p>
+                        </div>
+                        <ul class="mt-8 space-y-4 flex-1">
+                            {plan.features.map((feature) => (
+                                <li class="flex items-center gap-3 text-heading-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#5671FF] shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>{feature}</span>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div class="mt-8">
+                            <button 
+                                data-open-modal 
+                                data-plan={plan.name}
+                                class:list={[
+                                    "w-full px-6 py-3 rounded-xl text-center font-medium transition-all duration-300",
+                                    plan.buttonVariant === "primary" ? 
+                                        "bg-gradient-to-br from-[#2B3A67] to-[#5671FF] text-white hover:from-[#2B3A67]/90 hover:to-[#5671FF]/90 hover:shadow-lg hover:shadow-[#5671FF]/30" : 
+                                        "border-2 border-[#5671FF]/30 text-heading-1 hover:bg-[#5671FF]/10 hover:shadow-lg hover:shadow-[#5671FF]/20"
+                                ]}>
+                                {plan.buttonText}
+                            </button>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </Container>
+
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div class="absolute top-1/4 left-1/3 w-28 h-28 overflow-auto flex rounded-xl relative blur-2xl">
+            <span class="absolute w-16 h-16 -top-1 -right-1 bg-[#2B3A67] rounded-md rotate-45"></span>
+            <span class="absolute w-16 h-16 -bottom-1 -right-1 bg-[#5671FF] rounded-md rotate-45"></span>
+            <span class="absolute w-16 h-16 -bottom-1 -left-1 bg-[#2B3A67] rounded-md rotate-45"></span>
+        </div>
+        <div class="absolute bottom-1/4 right-1/3 w-28 h-28 overflow-auto flex rounded-xl relative blur-2xl">
+            <span class="absolute w-16 h-16 -top-1 -right-1 bg-[#2B3A67] rounded-md rotate-45"></span>
+            <span class="absolute w-16 h-16 -bottom-1 -right-1 bg-[#5671FF] rounded-md rotate-45"></span>
+            <span class="absolute w-16 h-16 -bottom-1 -left-1 bg-[#2B3A67] rounded-md rotate-45"></span>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+
+    @keyframes float-reverse {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(20px); }
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-float-reverse {
+        animation: float-reverse 6s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(86, 113, 255, 0.2); }
+        50% { box-shadow: 0 0 40px rgba(86, 113, 255, 0.4); }
+    }
+
+    .popular-plan {
+        animation: glow 3s ease-in-out infinite;
+    }
+</style>
