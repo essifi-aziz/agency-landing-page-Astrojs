@@ -1,9 +1,8 @@
----
 const CLICKUP_LIST_ID = "901208081795";
 const CLICKUP_TOKEN = "pk_164654581_FYIXK9MP3SYQXODTNIGJQJTZIBE464FO";
 ---
 <div id="contactModal" class="fixed inset-0 bg-gradient-to-br from-gray-900/60 to-gray-900/80 backdrop-blur-xl hidden z-50 flex items-center justify-center">
-    <div class="bg-gradient-to-b from-box-bg/80 to-box-bg/90 backdrop-blur-2xl border border-box-border/30 rounded-3xl p-8 md:p-10 w-11/12 max-w-lg shadow-2xl transform transition-all duration-500 scale-95 opacity-0 modal-content">
+    <div class="bg-gradient-to-b from-box-bg/80 to-box-bg/90 backdrop-blur-2xl border border-box-border/30 rounded-3xl p-6 sm:p-8 md:p-10 w-11/12 max-w-lg shadow-2xl transform transition-all duration-500 scale-95 opacity-0 modal-content overflow-y-auto max-h-[90vh]">
         <div class="flex justify-between items-center mb-6">
             <h3 class="text-xl font-semibold text-heading-1 flex items-center">Let’s Create Something Amazing Together! 🤝</h3>
             <button id="closeModal" class="text-heading-3 hover:text-heading-1">
@@ -16,60 +15,70 @@ const CLICKUP_TOKEN = "pk_164654581_FYIXK9MP3SYQXODTNIGJQJTZIBE464FO";
         <form id="contactForm" class="space-y-6">
             <input type="hidden" id="selectedPlan" name="selectedPlan" value="">
             <div>
-                <label for="email" class="block text-heading-2 mb-2 font-medium">Your Email (We’ll Reach Out Soon!) *</label>
+                <label for="email" class="block text-heading-2 mb-2 font-medium">Your Email Address (Required) *</label>
                 <input 
                     type="email" 
                     id="email" 
                     name="email" 
                     required
+                    aria-required="true"
+                    aria-describedby="emailHelp"
                     class="w-full px-4 py-3 rounded-xl border border-box-border/50 bg-box-bg/50 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-[#5671FF]/50 transition-all duration-300 dark:text-white text-heading-2 placeholder:text-heading-3"
-                    placeholder="e.g., hello@yourbusiness.com"
+                    placeholder="Enter your email (e.g., hello@yourbusiness.com)"
                 >
+                <small id="emailHelp" class="text-heading-3 mt-1 block">We’ll use this to contact you within 24 hours. Ensure it’s valid!</small>
             </div>
 
             <div>
-                <label for="need" class="block text-heading-2 mb-2 font-medium flex items-center">What’s Your Biggest Need Right Now? 💡 *</label>
+                <label for="need" class="block text-heading-2 mb-2 font-medium flex items-center">What’s Your Biggest Need? 💡 (Required) *</label>
                 <select 
                     id="need" 
                     name="need" 
                     required
+                    aria-required="true"
+                    aria-describedby="needHelp"
                     class="w-full px-4 py-3 rounded-xl border border-box-border/50 bg-box-bg/50 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-[#5671FF]/50 transition-all duration-300 dark:text-white text-heading-2"
                 >
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="website">A new website</option>
-                    <option value="app">A mobile app</option>
-                    <option value="branding">Branding (logo, identity)</option>
-                    <option value="other">Something else</option>
+                    <option value="" disabled selected>Select your primary need</option>
+                    <option value="website">A new website to boost my online presence</option>
+                    <option value="app">A mobile app to engage my audience</option>
+                    <option value="branding">Branding (logo, identity) to stand out</option>
+                    <option value="other">Something else (please specify below)</option>
                 </select>
+                <small id="needHelp" class="text-heading-3 mt-1 block">Choose the service that aligns with your goals—help us understand you better!</small>
             </div>
 
             <div>
-                <label for="timeline" class="block text-heading-2 mb-2 font-medium flex items-center">How Soon Do You Want to Start? ⏰</label>
+                <label for="timeline" class="block text-heading-2 mb-2 font-medium flex items-center">When Do You Want to Start? ⏰ (Optional)</label>
                 <select 
                     id="timeline" 
                     name="timeline"
+                    aria-describedby="timelineHelp"
                     class="w-full px-4 py-3 rounded-xl border border-box-border/50 bg-box-bg/50 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-[#5671FF]/50 transition-all duration-300 dark:text-white text-heading-2"
                 >
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="asap">ASAP (within a week)</option>
-                    <option value="month">Within a month</option>
-                    <option value="exploring">Just exploring for now</option>
+                    <option value="" disabled selected>Select your preferred timeline</option>
+                    <option value="asap">ASAP (within a week) – Let’s move fast!</option>
+                    <option value="month">Within a month – Planned and ready</option>
+                    <option value="exploring">Just exploring for now – No rush</option>
                 </select>
+                <small id="timelineHelp" class="text-heading-3 mt-1 block">Let us know your pace—we’ll adapt to your schedule!</small>
             </div>
 
             <div>
-                <label for="dream" class="block text-heading-2 mb-2 font-medium">What’s Your Dream for This Project?</label>
+                <label for="dream" class="block text-heading-2 mb-2 font-medium">What’s Your Vision for This Project? (Optional)</label>
                 <textarea 
                     id="dream" 
                     name="dream" 
                     rows="3"
+                    aria-describedby="dreamHelp"
                     class="w-full px-4 py-3 rounded-xl border border-box-border/50 bg-box-bg/50 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-[#5671FF]/50 transition-all duration-300 dark:text-white text-heading-2 placeholder:text-heading-3"
-                    placeholder="e.g., ‘I want a website that wows my customers!’"
+                    placeholder="Share your goal (e.g., ‘I want a website that wows my customers!’ or ‘An app to streamline my team’s work.’)"
                 ></textarea>
+                <small id="dreamHelp" class="text-heading-3 mt-1 block">Tell us your big ideas—we love turning dreams into reality!</small>
             </div>
 
             <div class="text-sm text-heading-3">
-                We’re so excited to hear from you! Our team will reach out soon to bring your vision to life with a solution made just for you!
+                We’re thrilled to connect with you! Our team will reach out within 24 hours to craft a fast, tailored solution for your project.
             </div>
 
             <button 
@@ -82,13 +91,13 @@ const CLICKUP_TOKEN = "pk_164654581_FYIXK9MP3SYQXODTNIGJQJTZIBE464FO";
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Processing...
+                    Sending your request...
                 </span>
                 <span class="success-text hidden">
                     <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    Sent Successfully!
+                    Sent! We’ll be in touch soon!
                 </span>
             </button>
         </form>
@@ -228,5 +237,57 @@ const CLICKUP_TOKEN = "pk_164654581_FYIXK9MP3SYQXODTNIGJQJTZIBE464FO";
         0% { transform: scale(1); }
         50% { transform: scale(1.02); }
         100% { transform: scale(1); }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 640px) {
+        .modal-content {
+            padding: 1.5rem; /* Reduced padding for smaller screens */
+            width: 90%; /* Slightly narrower width for better fit */
+            max-width: 100%; /* Ensure it doesn't exceed screen width */
+            max-height: 85vh; /* Slightly reduced max height */
+        }
+
+        .modal-content h3 {
+            font-size: 1.125rem; /* Smaller heading on mobile */
+        }
+
+        .space-y-6 {
+            margin-top: 1rem; /* Adjusted spacing */
+        }
+
+        .space-y-6 > div {
+            margin-bottom: 1rem; /* Reduced spacing between form fields */
+        }
+
+        input, select, textarea {
+            font-size: 0.875rem; /* Smaller font size for better fit */
+            padding: 0.5rem 1rem; /* Adjusted padding */
+        }
+
+        .text-sm {
+            font-size: 0.75rem; /* Smaller text for follow-up message */
+        }
+
+        button[type="submit"] {
+            padding: 0.75rem 1.5rem; /* Adjusted button padding */
+            font-size: 0.875rem; /* Smaller button text */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .modal-content {
+            padding: 1rem; /* Further reduced padding for very small screens */
+            width: 95%; /* Even narrower for tiny screens */
+            max-height: 80vh; /* Further reduced max height */
+        }
+
+        input, select, textarea {
+            font-size: 0.813rem; /* Even smaller font size */
+        }
+
+        .modal-content h3 {
+            font-size: 1rem; /* Even smaller heading */
+        }
     }
 </style>
