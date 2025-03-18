@@ -5,122 +5,124 @@ import Container from "../shared/Container.astro";
 <section class="relative mt-12 md:mt-16">
   <Container>
     <div
-      class="mx-auto p-5 sm:p-6 py-6 sm:py-8 max-w-5xl rounded-3xl bg-box-bg border border-box-border shadow-lg shadow-box-shadow grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8 text-center items-center justify-items-center"
+      class="mx-auto p-6 sm:p-8 py-8 sm:py-10 max-w-5xl rounded-3xl bg-box-bg border border-box-border shadow-lg shadow-box-shadow grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center justify-items-center relative"
     >
-      <div class="text-center flex flex-col items-center justify-center h-full">
+      <div class="text-center flex flex-col h-full justify-center">
         <h2
-          class="font-semibold text-xl sm:text-2xl md:text-4xl text-heading-1 font-['Roboto'] leading-none"
+          class="font-semibold text-xl sm:text-2xl md:text-4xl text-heading-1 font-['Roboto']"
         >
           3+
         </h2>
-        <p class="mt-2 text-heading-3 font-['Roboto'] text-sm sm:text-base">
-          Created projects
-        </p>
+        <p class="mt-3 text-heading-3 font-['Roboto']">Created projects</p>
       </div>
 
-      <div class="text-center flex flex-col items-center justify-center h-full">
+      <div class="text-center flex flex-col h-full justify-center">
         <h2
-          class="font-semibold text-xl sm:text-2xl md:text-4xl text-heading-1 font-['Roboto'] leading-none"
+          class="font-semibold text-xl sm:text-2xl md:text-4xl text-heading-1 font-['Roboto']"
         >
           2+
         </h2>
-        <p class="mt-2 text-heading-3 font-['Roboto'] text-sm sm:text-base">
-          Happy Client
-        </p>
+        <p class="mt-3 text-heading-3 font-['Roboto']">Happy Clients</p>
       </div>
 
-      <div class="text-center flex flex-col items-center justify-center h-full">
+      <div class="text-center flex flex-col h-full justify-center">
         <h2
-          class="font-semibold text-xl sm:text-2xl md:text-4xl text-heading-1 font-['Roboto'] leading-none"
+          class="font-semibold text-xl sm:text-2xl md:text-4xl text-heading-1 font-['Roboto']"
         >
           2+
         </h2>
-        <p class="mt-2 text-heading-3 font-['Roboto'] text-sm sm:text-base">
-          Months of Excellence
-        </p>
+        <p class="mt-3 text-heading-3 font-['Roboto']">Months of Excellence</p>
       </div>
+
+      <style>
+        /* Adjust grid layout for symmetry */
+        [class*="grid"] {
+          position: relative;
+        }
+
+        [class*="grid"] > div {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          min-height: 8rem; /* Consistent height for centering */
+        }
+
+        /* Centered and content-height dividers */
+        [class*="grid-cols-"]::before,
+        [class*="grid-cols-"]::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 0.0625rem; /* 1px equivalent in rem */
+          background-color: rgba(255, 255, 255, 0.2); /* Subtle divider */
+          height: 40%; /* Reduced from 60% to 40% to make lines shorter */
+        }
+
+        [class*="grid-cols-"]::before {
+          left: 33.333%; /* Between first and second column */
+        }
+
+        [class*="grid-cols-"]::after {
+          left: 66.666%; /* Between second and third column */
+        }
+
+        /* Remove dividers on mobile */
+        @media (max-width: 40rem) { /* 640px equivalent in rem */
+          [class*="grid-cols-"]::before,
+          [class*="grid-cols-"]::after {
+            display: none;
+          }
+        }
+
+        /* Responsive padding and spacing */
+        @media (max-width: 40rem) { /* 640px equivalent */
+          .mx-auto {
+            padding: 1rem; /* Reduced padding for mobile */
+            gap: 1rem; /* Reduced gap for mobile */
+          }
+
+          [class*="grid"] > div {
+            min-height: 6rem; /* Smaller height on mobile */
+          }
+
+          h2 {
+            font-size: clamp(1rem, 5vw, 1.5rem); /* Responsive font size */
+          }
+
+          p {
+            font-size: clamp(0.75rem, 3vw, 0.875rem); /* Responsive font size */
+            margin-top: 0.5rem; /* Reduced margin */
+          }
+        }
+
+        @media (min-width: 40rem) { /* 640px equivalent */
+          .mx-auto {
+            padding: clamp(1.5rem, 3vw, 2rem) clamp(1rem, 2vw, 1.5rem); /* Responsive padding */
+            gap: clamp(1.5rem, 2vw, 2rem); /* Responsive gap */
+          }
+
+          h2 {
+            font-size: clamp(1.5rem, 4vw, 2.25rem); /* Responsive font size */
+          }
+
+          p {
+            font-size: clamp(0.875rem, 1.5vw, 1rem); /* Responsive font size */
+          }
+        }
+
+        @media (min-width: 48rem) { /* 768px equivalent */
+          .mx-auto {
+            gap: clamp(2rem, 2.5vw, 2.5rem); /* Slightly larger gap */
+          }
+        }
+
+        @media (min-width: 64rem) { /* 1024px equivalent */
+          .mx-auto {
+            gap: clamp(2.5rem, 3vw, 3rem); /* Larger gap for larger screens */
+          }
+        }
+      </style>
     </div>
   </Container>
 </section>
-
-<style>
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Single column on mobile */
-  }
-
-  @media (min-width: 640px) {
-    .grid {
-      grid-template-columns: repeat(3, 1fr); /* Three equal columns on sm and up */
-    }
-  }
-
-  .grid > div {
-    padding: 1rem; /* Consistent padding inside each item */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: rgba(255, 255, 255, 0.05); /* Subtle background for contrast */
-    border-radius: 0.75rem; /* Rounded corners for each item */
-  }
-
-  .grid > div:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
-    box-shadow: 0 8px 16px rgba(86, 113, 255, 0.2); /* Enhanced shadow */
-  }
-
-  h2 {
-    line-height: 1; /* Tight line height for numbers */
-    margin-bottom: 0.5rem; /* Controlled spacing */
-    color: #5671FF; /* Blue accent for numbers */
-  }
-
-  p {
-    line-height: 1.2; /* Readable line height */
-    color: #a0a0a0; /* Lighter text for contrast */
-    text-transform: capitalize; /* Consistent capitalization */
-  }
-
-  .flex {
-    min-height: 120px; /* Minimum height for vertical centering */
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 639px) {
-    .grid {
-      gap: 1.5rem; /* Reduced gap on mobile */
-    }
-
-    .grid > div {
-      padding: 0.75rem; /* Smaller padding on mobile */
-    }
-
-    h2 {
-      font-size: 1.5rem; /* Smaller numbers */
-    }
-
-    p {
-      font-size: 0.75rem; /* Smaller text */
-    }
-
-    .flex {
-      min-height: 100px; /* Adjusted height */
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .grid > div {
-      padding: 1.5rem; /* Larger padding on lg screens */
-    }
-
-    h2 {
-      font-size: 2.5rem; /* Larger numbers */
-    }
-
-    p {
-      font-size: 1rem; /* Larger text */
-    }
-
-    .flex {
-      min-height: 140px; /* Slightly taller on large screens */
-    }
-  }
-</style>
