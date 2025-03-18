@@ -49,19 +49,16 @@ const CLICKUP_TOKEN = "pk_164654581_FYIXK9MP3SYQXODTNIGJQJTZIBE464FO";
             </div>
 
             <div>
-                <label for="timeline" class="block text-heading-2 mb-2 font-medium">Preferred Start Date</label>
-                <select 
-                    id="timeline" 
-                    name="timeline"
-                    aria-describedby="timelineHelp"
-                    class="w-full px-4 py-3 rounded-xl border border-box-border/50 bg-box-bg/50 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-[#5671FF]/50 transition-all duration-300 dark:text-white text-heading-2"
-                >
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="asap">Within 1 week</option>
-                    <option value="month">Within 1 month</option>
-                    <option value="exploring">Later</option>
-                </select>
-                <small id="timelineHelp" class="text-heading-3 mt-1 block">Optional.</small>
+                <label for="description" class="block text-heading-2 mb-2 font-medium">Project Description</label>
+                <textarea 
+                    id="description" 
+                    name="description" 
+                    rows="2"
+                    aria-describedby="descriptionHelp"
+                    class="w-full px-4 py-3 rounded-xl border border-box-border/50 bg-box-bg/50 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-[#5671FF]/50 transition-all duration-300 dark:text-white text-heading-2 placeholder:text-heading-3"
+                    placeholder="Brief project overview"
+                ></textarea>
+                <small id="descriptionHelp" class="text-heading-3 mt-1 block">Optional.</small>
             </div>
 
             <button 
@@ -134,7 +131,7 @@ const CLICKUP_TOKEN = "pk_164654581_FYIXK9MP3SYQXODTNIGJQJTZIBE464FO";
             const formData = new FormData(form);
             const taskData = {
                 name: formData.get('email'),
-                description: `Plan: ${formData.get('selectedPlan')}\nNeed: ${formData.get('need')}\nTimeline: ${formData.get('timeline')}`,
+                description: `Plan: ${formData.get('selectedPlan')}\nNeed: ${formData.get('need')}\nDescription: ${formData.get('description') || 'Not provided'}`,
                 list_id: CLICKUP_LIST_ID,
                 assignees: [],
                 tags: [formData.get('selectedPlan'), formData.get('need')],
@@ -243,7 +240,7 @@ const CLICKUP_TOKEN = "pk_164654581_FYIXK9MP3SYQXODTNIGJQJTZIBE464FO";
             margin-bottom: 1rem;
         }
 
-        input, select {
+        input, select, textarea {
             font-size: 0.875rem;
             padding: 0.5rem 1rem;
         }
@@ -265,7 +262,7 @@ const CLICKUP_TOKEN = "pk_164654581_FYIXK9MP3SYQXODTNIGJQJTZIBE464FO";
             max-height: 80vh;
         }
 
-        input, select {
+        input, select, textarea {
             font-size: 0.813rem;
         }
 
