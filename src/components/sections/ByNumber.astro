@@ -5,35 +5,122 @@ import Container from "../shared/Container.astro";
 <section class="relative mt-12 md:mt-16">
   <Container>
     <div
-      class="mx-auto p-5 sm:p-6 py-6 sm:py-8 max-w-5xl rounded-3xl bg-box-bg border border-box-border shadow-lg shadow-box-shadow md:divide-x divide-box-border grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 md:gap-6 lg:gap-12"
+      class="mx-auto p-5 sm:p-6 py-6 sm:py-8 max-w-5xl rounded-3xl bg-box-bg border border-box-border shadow-lg shadow-box-shadow grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8 text-center items-center justify-items-center"
     >
-      <div class="text-center">
+      <div class="text-center flex flex-col items-center justify-center h-full">
         <h2
-          class="font-semibold text-xl sm:text-2xl md:text-4xl text-heading-1 font-['Roboto']"
+          class="font-semibold text-xl sm:text-2xl md:text-4xl text-heading-1 font-['Roboto'] leading-none"
         >
           3+
         </h2>
-        <p class="mt-2 text-heading-3 font-['Roboto']">Created projects</p>
+        <p class="mt-2 text-heading-3 font-['Roboto'] text-sm sm:text-base">
+          Created projects
+        </p>
       </div>
 
-      
-      <div class="text-center">
+      <div class="text-center flex flex-col items-center justify-center h-full">
         <h2
-          class="font-semibold text-xl sm:text-2xl md:text-4xl text-heading-1 font-['Roboto']"
+          class="font-semibold text-xl sm:text-2xl md:text-4xl text-heading-1 font-['Roboto'] leading-none"
         >
           2+
         </h2>
-        <p class="mt-2 text-heading-3 font-['Roboto']">Happy Client</p>
+        <p class="mt-2 text-heading-3 font-['Roboto'] text-sm sm:text-base">
+          Happy Client
+        </p>
       </div>
 
-      <div class="text-center">
+      <div class="text-center flex flex-col items-center justify-center h-full">
         <h2
-          class="font-semibold text-xl sm:text-2xl md:text-4xl text-heading-1 font-['Roboto']"
+          class="font-semibold text-xl sm:text-2xl md:text-4xl text-heading-1 font-['Roboto'] leading-none"
         >
           2+
         </h2>
-        <p class="mt-2 text-heading-3 font-['Roboto']">Months of Excellence</p>
+        <p class="mt-2 text-heading-3 font-['Roboto'] text-sm sm:text-base">
+          Months of Excellence
+        </p>
       </div>
     </div>
   </Container>
 </section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column on mobile */
+  }
+
+  @media (min-width: 640px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr); /* Three equal columns on sm and up */
+    }
+  }
+
+  .grid > div {
+    padding: 1rem; /* Consistent padding inside each item */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.05); /* Subtle background for contrast */
+    border-radius: 0.75rem; /* Rounded corners for each item */
+  }
+
+  .grid > div:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 16px rgba(86, 113, 255, 0.2); /* Enhanced shadow */
+  }
+
+  h2 {
+    line-height: 1; /* Tight line height for numbers */
+    margin-bottom: 0.5rem; /* Controlled spacing */
+    color: #5671FF; /* Blue accent for numbers */
+  }
+
+  p {
+    line-height: 1.2; /* Readable line height */
+    color: #a0a0a0; /* Lighter text for contrast */
+    text-transform: capitalize; /* Consistent capitalization */
+  }
+
+  .flex {
+    min-height: 120px; /* Minimum height for vertical centering */
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 639px) {
+    .grid {
+      gap: 1.5rem; /* Reduced gap on mobile */
+    }
+
+    .grid > div {
+      padding: 0.75rem; /* Smaller padding on mobile */
+    }
+
+    h2 {
+      font-size: 1.5rem; /* Smaller numbers */
+    }
+
+    p {
+      font-size: 0.75rem; /* Smaller text */
+    }
+
+    .flex {
+      min-height: 100px; /* Adjusted height */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid > div {
+      padding: 1.5rem; /* Larger padding on lg screens */
+    }
+
+    h2 {
+      font-size: 2.5rem; /* Larger numbers */
+    }
+
+    p {
+      font-size: 1rem; /* Larger text */
+    }
+
+    .flex {
+      min-height: 140px; /* Slightly taller on large screens */
+    }
+  }
+</style>
